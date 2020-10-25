@@ -5,20 +5,22 @@
                 <h4 class="title text-center mt-4">
                     Make Your Account
                 </h4>
-                <form class="form-box px-3">
+                <form class="form-box px-3" method="POST" action="<?= base_url('login/regis') ?>">
                     <div class="form-input">
                         <span><i class="fas fa-id-card"></i></span>
                         <input type="text" name="nik" placeholder="NIK">
                     </div>
                     <div class="form-input">
                         <span><i class="fas fa-signature"></i></span>
-                        <input type="text" name="name" placeholder="Name">
+                        <input type="text" name="name" placeholder="Name" value="<?= set_value('name'); ?>">
+                        <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-input">
                         <span><i class="fas fa-envelope"></i></i></span>
-                        <input type="text" name="email" placeholder="Email">
+                        <input type="text" name="email" placeholder="Email" value="<?= set_value('email'); ?>">
+                        <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
-                    <div class="form-input">
+                    <div class=" form-input">
                         <span><i class="fa fa-user"></i></span>
                         <input type="text" name="username" placeholder="Username">
                     </div>
