@@ -8,7 +8,8 @@
                 <form class="form-box px-3" method="POST" action="<?= base_url('login/regis') ?>">
                     <div class="form-input">
                         <span><i class="fas fa-id-card"></i></span>
-                        <input type="text" name="nik" placeholder="NIK">
+                        <input type="text" name="nik" placeholder="NIK" value="<?= set_value('nik'); ?>">
+                        <?= form_error('nik', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-input">
                         <span><i class="fas fa-signature"></i></span>
@@ -22,15 +23,18 @@
                     </div>
                     <div class=" form-input">
                         <span><i class="fa fa-user"></i></span>
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" name="username" placeholder="Username" value="<?= set_value('username'); ?>">
+                        <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-input">
                         <span><i class="fa fa-key"></i></span>
                         <input type="password" name="password" placeholder="Password">
+                        <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-input">
                         <span><i class="fas fa-phone"></i></i></span>
-                        <input type="text" name="Phone" placeholder="phone">
+                        <input type="text" name="phone" placeholder="Phone" value="<?= set_value('phone'); ?>">
+                        <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
 

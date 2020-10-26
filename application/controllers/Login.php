@@ -16,11 +16,20 @@ class Login extends CI_Controller
     }
     public function regis()
     {
-        $this->form_validation->set_rules('nik', 'Nik', 'required|trim');
+        $this->form_validation->set_rules('nik', 'Nik', 'required|trim|min_length[16]|max_length[16]', [
+            'min_length' => 'NIK Must Match',
+            'max_length' => 'NIK Must Match'
+        ]);
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('username', 'Username', 'required|trim');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]', [
+            'min_length' =>  'Password To Short'
+        ]);
+        $this->form_validation->set_rules('phone', 'Phone', 'required|trim|min_length[12]|max_length[13]', [
+            'min_length' => 'Phone Number Too Short',
+            'max_length' => 'Phone Number Too Long'
+        ]);
         if ($this->form_validation->run() == false) {
 
             $data['title'] = 'User Registration';
