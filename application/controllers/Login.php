@@ -37,6 +37,12 @@ class Login extends CI_Controller
             $this->load->view('usrlgn/usr/rgs');
             $this->load->view('usrlgn/template/footer');
         } else {
+            $data = [
+                'nik' => $this->input->post('nik'),
+                'name' => htmlspecialchars($this->input->post('name', true)),
+                'email' => htmlspecialchars($this->input->post('email', true)),
+                
+            ]
         }
     }
 }
