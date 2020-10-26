@@ -10,19 +10,27 @@ class Login extends CI_Controller
     }
     public function logon()
     {
-        $this->load->view('usrlgn/template/header');
+        $data['title'] = 'User Login';
+        $this->load->view('usrlgn/template/header', $data);
         $this->load->view('usrlgn/usr/lgn');
         $this->load->view('usrlgn/template/footer');
     }
     public function regis()
     {
-        $this->form_validation->set_rules('nik', 'Nik', 'required|trim|min_length[16]|max_length[16]', [
+        $this->form_validation->set_rules('nik', 'Nik', 'required|trim|min_length[16]|max_length[16]|is_unique[masyarakat.nik]', [
             'min_length' => 'NIK Must Match',
-            'max_length' => 'NIK Must Match'
+            'max_length' => 'NIK Must Match',
+            'is_unique' => 'This NIK Has Been Registered'
         ]);
-        $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('name', 'Name', 'required|trim|is_unique[masyarakat.name]',[
+            'is_unique' => 'This Name Has Been Used'
+        ]);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[masyarakat.email]',[
+            'is_unique' => 'This Email Has Been Used'
+        ]);
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[masyarakat.username]',[
+            'is_unique' => 'This NIK Has Been Used'
+        ]);
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]', [
             'min_length' =>  'Password To Short'
         ]);
@@ -48,7 +56,9 @@ class Login extends CI_Controller
                 
             ];
 
-            $this->db->insert('masyarakat', $data)
+            $this->db->insert('masyarakat', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your Account Created Successfully </div>');
+            redirect('login/logon');
         }
     }
 }

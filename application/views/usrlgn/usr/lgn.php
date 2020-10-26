@@ -5,6 +5,8 @@
         <h4 class="title text-center mt-4">
           Login into account
         </h4>
+
+        <?= $this->session->flashdata('message'); ?>
         <form class="form-box px-3">
           <div class="form-input">
             <span><i class="fa fa-user"></i></span>
