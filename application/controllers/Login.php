@@ -41,8 +41,14 @@ class Login extends CI_Controller
                 'nik' => $this->input->post('nik'),
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
+                'username' => htmlspecialchars($this->input->post('username', true)),
+                'password' => htmlspecialchars($this->input->post('password', true)),
+                'phone' => $this->input->post('phone'),
+                'date_created' => time()
                 
-            ]
+            ];
+
+            $this->db->insert('masyarakat', $data)
         }
     }
 }
